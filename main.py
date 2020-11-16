@@ -1,4 +1,9 @@
 from argparse import ArgumentParser
+import os
+
+from gsync.sync import gsutil_sync
+
+
 
 def str2bool(v):
     if isinstance(v, bool):
@@ -11,6 +16,9 @@ def str2bool(v):
         raise argparse.ArgumentTypeError('Boolean value expected.')
 
 def main(args):
+
+	os.makedirs(f'{args.basedir}/dataset/', exist_ok=True)
+
 	print("[main.start] of the program")
 	if args.save_file:
 		 with open(f'{args.basedir}/hello.text', 'w') as file_handler:
