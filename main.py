@@ -3,8 +3,6 @@ import os
 
 from gsync.sync import gsutil_sync
 
-
-
 def str2bool(v):
     if isinstance(v, bool):
        return v
@@ -15,9 +13,23 @@ def str2bool(v):
     else:
         raise argparse.ArgumentTypeError('Boolean value expected.')
 
-def main(args):
+def sync_dataset(args):
 
-	os.makedirs(f'{args.basedir}/dataset/', exist_ok=True)
+	# data set dir in the server
+	dataset_dir = f'{args.basedir}/dataset/'
+
+	# sync from google cloud
+	gsutil_sync(
+        push=False,
+        bucket_name='aiml-dst-ids-data',
+        file_system_root=dataset_dir,
+        folder_name='data',
+        bucket_prefix_folder='rfelix')
+
+	# treat data, if zip's etc...
+
+
+def main(args):
 
 	print("[main.start] of the program")
 	if args.save_file:
@@ -28,6 +40,7 @@ def main(args):
 		 	lines = file_handler.readlines()
 		 	_ = [print(f) for f in lines]
 
+	sync_dataset(args)
 
 	print("[end.start] of the program")
 

@@ -237,24 +237,19 @@ def gs_wrap_sync(
     return
 
 
-def gsutil_sync(
-    push: bool,
-    bucket_name: str,
-    file_system_root: Path,
-    folder_name: str,
-    max_server_error_attempts: int = 100,
-    retry_interval_seconds: int = 5,
-    only_copy_newer: bool = True,
-    bucket_prefix_folder: str = "",
-) -> None:
-    """
-    Either pushes or pulls newer files to or from Google Cloud Storage
+def gsutil_sync(push: bool,
+                bucket_name: str,
+                file_system_root: str,
+                folder_name: str,
+                max_server_error_attempts: int = 100,
+                retry_interval_seconds: int = 5,
+                only_copy_newer: bool = True,
+                bucket_prefix_folder: str = "") -> None:
 
-    returns: None
-    """
-    fs_dir_path = file_system_root / folder_name
+    fs_dir_path = Path(f'{file_system_root}/{folder_name}')
     if not fs_dir_path.is_dir():
         fs_dir_path.mkdir(parents=True)
+
     for attempts in range(1, max_server_error_attempts + 1):
         logger.info(f"Start of {attempts} of {max_server_error_attempts} GCS sync")
         try:
