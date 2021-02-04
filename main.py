@@ -16,7 +16,7 @@ def str2bool(v):
 def sync_dataset(args):
 
 	# data set dir in the server
-	dataset_dir = f'{args.basedir}/dataset/'
+	dataset_dir = f'{args.basedir}/'
 
 	# sync from google cloud
 	gsutil_sync(
