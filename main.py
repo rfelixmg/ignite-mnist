@@ -24,7 +24,7 @@ def sync_dataset(args):
         bucket_name='aiml-dst-ids-data',
         file_system_root=dataset_dir,
         folder_name='experiments',
-        bucket_prefix_folder='rfelix/experiments/')
+        bucket_prefix_folder='rfelix/')
 
 	# treat data, if zip's etc...
 
@@ -36,7 +36,7 @@ def main(args):
 		 with open(f'{args.basedir}/experiments/hello.text', 'w') as file_handler:
 		 	file_handler.write("Hello world from file!\n")
 	else:
-		 with open(f'{args.basedir}/experimentshello.text', 'r') as file_handler:
+		 with open(f'{args.basedir}/experiments/hello.text', 'r') as file_handler:
 		 	lines = file_handler.readlines()
 		 	_ = [print(f) for f in lines]
 

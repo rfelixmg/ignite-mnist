@@ -264,6 +264,7 @@ def gsutil_sync(push: bool,
             )
             timer002 = datetime.datetime.now()
             sync_duration = timer002 - timer001
+            print(f"Sync Complete! -> Sync Duration: {sync_duration}")
             logger.info(f"Sync Complete! -> Sync Duration: {sync_duration}")
         except (
             ServerError,
