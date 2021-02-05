@@ -21,7 +21,7 @@ def sync_dataset(args):
 	# sync from google cloud
 	gsutil_sync(
         push=False,
-        bucket_name='aiml-dst-ids',
+        bucket_name='aiml-dst-ids-data',
         file_system_root=dataset_dir,
         folder_name='experiments',
         bucket_prefix_folder='rfelix')
