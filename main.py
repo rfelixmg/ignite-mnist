@@ -21,9 +21,9 @@ def sync_dataset(args):
 	# sync from google cloud
 	gsutil_sync(
         push=False,
-        bucket_name='aiml-dst-ids-data',
+        bucket_name='aiml-dst-ids',
         file_system_root=dataset_dir,
-        folder_name='data',
+        folder_name='experiments',
         bucket_prefix_folder='rfelix')
 
 	# treat data, if zip's etc...
@@ -33,7 +33,7 @@ def main(args):
 
 	print("[main.start] of the program")
 	if args.save_file:
-		 with open(f'{args.basedir}/hello.text', 'w') as file_handler:
+		 with open(f'{args.basedir}//test/hello.text', 'w') as file_handler:
 		 	file_handler.write("Hello world from file!\n")
 	else:
 		 with open(f'{args.basedir}/hello.text', 'r') as file_handler:
