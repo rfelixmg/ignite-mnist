@@ -41,11 +41,12 @@ def main(args):
 		 	_ = [print(f) for f in lines]
 
 	sync_dataset(args)
-    gs_wrap_sync(push = True,
-                 bucket_name='aiml-dst-ids-data',
-                 file_system_root='/pvc/',
-                 folder_name='experiments',
-                 bucket_prefix_folder='rfelix')
+
+    gs_wrap_sync(push=True,
+        bucket_name='aiml-dst-ids-data',
+        file_system_root='/pvc/',
+        folder_name='experiments',
+        bucket_prefix_folder='rfelix')
 
 	print("[end.start] of the program")
 
